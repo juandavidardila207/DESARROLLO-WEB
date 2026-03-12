@@ -1,0 +1,102 @@
+import type { Product, BannerCategory, NavCategory } from "@/types";
+
+export const products: Product[] = [
+  {
+    id: "iphone-15",
+    name: "iPhone 15 128 GB",
+    price: 2999000,
+    originalPrice: 3499000,
+    discount: 15,
+    badge: "-15%",
+    category: "smartphones",
+    image: "iphone",
+    inStock: true,
+  },
+  {
+    id: "portatil-gamer",
+    name: "Portátil Gamer",
+    price: 4999000,
+    originalPrice: 6249000,
+    discount: 20,
+    badge: "-20%",
+    category: "portatiles",
+    image: "laptop",
+    inStock: true,
+  },
+  {
+    id: "ram-ddr5",
+    name: "Memorias Ram DDR5",
+    price: 599000,
+    originalPrice: 749000,
+    discount: 20,
+    badge: "-20%",
+    category: "componentes",
+    image: "ram",
+    inStock: true,
+  },
+  {
+    id: "auriculares-gamer",
+    name: "Auriculares Gamer",
+    price: 399000,
+    originalPrice: 499000,
+    discount: 20,
+    badge: "-20%",
+    category: "audio",
+    image: "headphones",
+    inStock: true,
+  },
+  {
+    id: "cpu-gamer",
+    name: "CPU Gamer",
+    price: 8999000,
+    originalPrice: 10999000,
+    discount: 18,
+    badge: "-18%",
+    category: "componentes",
+    image: "cpu",
+    inStock: true,
+  },
+];
+
+export const bannerCategories: BannerCategory[] = [
+  {
+    id: "portatiles",
+    label: "Los mejores portátiles",
+    href: "/portatiles",
+    bgColor: "from-slate-900 to-slate-800",
+    svgContent: "laptop",
+  },
+  {
+    id: "smartphones",
+    label: "Estrena smartphone",
+    href: "/smartphones",
+    bgColor: "from-emerald-950 to-teal-900",
+    svgContent: "phone",
+  },
+  {
+    id: "televisores",
+    label: "Novedades en televisores",
+    href: "/televisores",
+    bgColor: "from-orange-950 to-amber-900",
+    svgContent: "tv",
+  },
+  {
+    id: "hogar",
+    label: "Conecta con tu hogar",
+    href: "/hogar",
+    bgColor: "from-zinc-900 to-zinc-800",
+    svgContent: "home",
+  },
+];
+
+export const navCategories: NavCategory[] = [
+  { label: "Inicio", href: "/", active: true },
+  { label: "Portátiles", href: "/portatiles" },
+  { label: "Smartphones", href: "/smartphones" },
+  { label: "Componentes PC", href: "/componentes" },
+  { label: "Periféricos", href: "/perifericos" },
+  { label: "Televisores", href: "/televisores" },
+  { label: "Audio", href: "/audio" },
+  { label: "Zona Gamer", href: "/zona-gamer" },
+  { label: "Ofertas", href: "/ofertas" },
+];
