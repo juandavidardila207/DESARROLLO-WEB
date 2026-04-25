@@ -1,0 +1,25 @@
+<div class="section-container">
+  <!-- Category Header -->
+  <div class="search-header">
+    <h1 class="search-title"><%= category.name %></h1>
+    <% if (category.description) { %>
+      <p class="search-count"><%= category.description %></p>
+    <% } %>
+    <p class="search-count"><%= products.length %> producto<%= products.length !== 1 ? 's' : '' %> encontrado<%= products.length !== 1 ? 's' : '' %></p>
+  </div>
+
+  <!-- Products Grid -->
+  <% if (products.length > 0) { %>
+    <div class="product-grid-4" style="padding-bottom: 48px;">
+      <% products.forEach(product => { %>
+        <%- include('partials/product-card', { product }) %>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <div class="no-results">
+      <div class="no-results-title">No hay productos en esta categoría</div>
+      <p class="no-results-text">Estamos trabajando para traerte más productos pronto.</p>
+      <a href="/" class="btn-primary" style="margin-top: 16px;">VOLVER AL INICIO</a>
+    </div>
+  <% } %>
+</div>

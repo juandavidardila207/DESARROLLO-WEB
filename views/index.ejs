@@ -1,0 +1,75 @@
+<!-- Hero Banner -->
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">OFERTAS <span>TOP</span><br>DE LA <span>SEMANA</span></h1>
+      <p class="hero-subtitle">Grandes descuentos en tecnología.<br>¡Aprovecha ahora!</p>
+      <a href="/categoria/ofertas" class="hero-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        VER TODAS LAS OFERTAS
+      </a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-badge">
+        <span class="hero-badge-text">Hasta un</span>
+        <span class="hero-badge-discount">-40%</span>
+        <span class="hero-badge-label">de descuento</span>
+      </div>
+      <div class="hero-arrows">»</div>
+    </div>
+  </div>
+</section>
+
+<!-- Ofertas Destacadas -->
+<section class="section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">OFERTAS DESTACADAS</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="product-grid">
+      <% products.forEach(product => { %>
+        <%- include('partials/product-card', { product }) %>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<!-- Categorías Banner -->
+<section class="categories-section">
+  <div class="section-container">
+    <div class="categories-grid">
+      <a href="/categoria/portatiles" class="category-card" style="background-image: url('/images/cat-portatiles.jpg');">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-content">
+          <div class="category-card-icon">+</div>
+          <span class="category-card-text">LOS MEJORES PORTÁTILES</span>
+        </div>
+      </a>
+      <a href="/categoria/smartphones" class="category-card" style="background-image: url('/images/cat-smartphones.jpg');">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-content">
+          <div class="category-card-icon">+</div>
+          <span class="category-card-text">ESTRENA SMARTPHONE</span>
+        </div>
+      </a>
+      <a href="/categoria/televisores" class="category-card" style="background-image: url('/images/cat-televisores.jpg');">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-content">
+          <div class="category-card-icon">+</div>
+          <span class="category-card-text">NOVEDADES EN TELEVISORES</span>
+        </div>
+      </a>
+      <a href="/categoria/audio" class="category-card" style="background-image: url('/images/cat-hogar.jpg');">
+        <div class="category-card-overlay"></div>
+        <div class="category-card-content">
+          <div class="category-card-icon">+</div>
+          <span class="category-card-text">CONECTA CON TU HOGAR</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>

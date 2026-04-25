@@ -1,0 +1,105 @@
+<div class="checkout-page">
+  <!-- Header simplificado -->
+  <div class="checkout-header">
+    <a href="/" class="checkout-header-logo">
+      <div class="logo-icon" style="width: 36px; height: 36px; font-size: 12px;">PC</div>
+      <span>PC Componentes</span>
+    </a>
+  </div>
+
+  <div class="checkout-container">
+    <h1 class="checkout-title">Finalizar Compra</h1>
+
+    <div class="checkout-layout">
+      <!-- Formulario -->
+      <div>
+        <h3 class="checkout-form-title">Datos de Envío</h3>
+        <form id="checkout-form">
+          <div class="form-group">
+            <label class="form-label">Nombre completo</label>
+            <input type="text" class="form-input" placeholder="Tu nombre" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-input" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Teléfono</label>
+              <input type="tel" class="form-input" placeholder="3xx xxx xxxx" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dirección</label>
+            <input type="text" class="form-input" placeholder="Calle, número, barrio" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ciudad</label>
+              <input type="text" class="form-input" placeholder="Ciudad" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Departamento</label>
+              <input type="text" class="form-input" placeholder="Departamento" required>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Resumen -->
+      <div>
+        <div class="checkout-summary">
+          <h3 class="checkout-summary-title">Resumen del Pedido</h3>
+          <div id="checkout-items">
+            <!-- Items se renderizan dinámicamente -->
+          </div>
+          <div class="checkout-total">
+            <span>Total</span>
+            <span id="checkout-total">$ 0</span>
+          </div>
+        </div>
+        <button class="btn-confirm" onclick="confirmOrder()">CONFIRMAR PEDIDO</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const allProducts = <%- JSON.stringify(products) %>;
+
+function renderCheckoutSummary() {
+  const cart = CartManager.getCart();
+  const container = document.getElementById('checkout-items');
+  let total = 0;
+  let html = '';
+
+  cart.forEach(item => {
+    const product = allProducts.find(p => p.id === item.productId);
+    if (!product) return;
+    const subtotal = product.price * item.quantity;
+    total += subtotal;
+    html += `
+      <div class="checkout-item">
+        <span>${product.name} x${item.quantity}</span>
+        <span>$ ${subtotal.toLocaleString('es-CO')}</span>
+      </div>
+    `;
+  });
+
+  container.innerHTML = html || '<div class="checkout-item"><span>No hay productos</span><span></span></div>';
+  document.getElementById('checkout-total').textContent = '$ ' + total.toLocaleString('es-CO');
+}
+
+function confirmOrder() {
+  const form = document.getElementById('checkout-form');
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+  CartManager.clearCart();
+  alert('¡Pedido confirmado! Gracias por tu compra en PC Componentes.');
+  window.location.href = '/';
+}
+
+document.addEventListener('DOMContentLoaded', renderCheckoutSummary);
+</script>

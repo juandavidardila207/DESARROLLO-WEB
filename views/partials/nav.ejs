@@ -1,0 +1,33 @@
+<nav class="main-nav">
+  <div class="nav-container">
+    <button class="mobile-menu-toggle" aria-label="Menú">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+    <ul class="nav-list">
+      <li><a href="/" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'inicio' ? 'active' : '' %>">Inicio</a></li>
+      <li><a href="/categoria/portatiles" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'portatiles' ? 'active' : '' %>">Portátiles</a></li>
+      <li><a href="/categoria/smartphones" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'smartphones' ? 'active' : '' %>">Smartphones</a></li>
+      <li><a href="/categoria/componentes-pc" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'componentes-pc' ? 'active' : '' %>">Componentes PC</a></li>
+      <li><a href="/categoria/perifericos" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'perifericos' ? 'active' : '' %>">Periféricos</a></li>
+      <li><a href="/categoria/televisores" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'televisores' ? 'active' : '' %>">Televisores</a></li>
+      <li><a href="/categoria/audio" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'audio' ? 'active' : '' %>">Audio</a></li>
+      <li><a href="/categoria/zona-gamer" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'zona-gamer' ? 'active' : '' %>">Zona Gamer</a></li>
+      <li><a href="/categoria/ofertas" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'ofertas' ? 'active' : '' %>">Ofertas</a></li>
+    </ul>
+  </div>
+  <div class="mobile-nav">
+    <a href="/" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'inicio' ? 'active' : '' %>">Inicio</a>
+    <a href="/categoria/portatiles" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'portatiles' ? 'active' : '' %>">Portátiles</a>
+    <a href="/categoria/smartphones" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'smartphones' ? 'active' : '' %>">Smartphones</a>
+    <a href="/categoria/componentes-pc" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'componentes-pc' ? 'active' : '' %>">Componentes PC</a>
+    <a href="/categoria/perifericos" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'perifericos' ? 'active' : '' %>">Periféricos</a>
+    <a href="/categoria/televisores" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'televisores' ? 'active' : '' %>">Televisores</a>
+    <a href="/categoria/audio" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'audio' ? 'active' : '' %>">Audio</a>
+    <a href="/categoria/zona-gamer" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'zona-gamer' ? 'active' : '' %>">Zona Gamer</a>
+    <a href="/categoria/ofertas" class="nav-item <%= typeof activeNav !== 'undefined' && activeNav === 'ofertas' ? 'active' : '' %>">Ofertas</a>
+  </div>
+</nav>

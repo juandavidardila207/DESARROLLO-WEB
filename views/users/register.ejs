@@ -1,0 +1,151 @@
+<section class="auth-section">
+  <div class="auth-container">
+
+    <div class="auth-card">
+
+      <div class="auth-logo">
+        <div class="logo-icon">PC</div>
+        <span class="logo-text">PC Componentes</span>
+      </div>
+
+      <h1 class="auth-title">Crear cuenta</h1>
+      <p class="auth-subtitle">Registrate para acceder a ofertas exclusivas y seguir tus pedidos.</p>
+
+      <% if (typeof errorMsg !== 'undefined') { %>
+        <div class="alert alert-error"><%= errorMsg %></div>
+      <% } %>
+
+      <form class="auth-form" action="/usuarios/registro" method="POST">
+
+        <div class="form-grid form-grid--two">
+
+          <div class="form-group">
+            <label class="form-label" for="firstName">Nombre <span class="required">*</span></label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-input"
+              placeholder="Juan"
+              value="<%= typeof formData !== 'undefined' ? formData.firstName : '' %>"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="lastName">Apellido <span class="required">*</span></label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-input"
+              placeholder="Pérez"
+              value="<%= typeof formData !== 'undefined' ? formData.lastName : '' %>"
+              required
+            >
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Correo electrónico <span class="required">*</span></label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="tucorreo@ejemplo.com"
+            autocomplete="email"
+            value="<%= typeof formData !== 'undefined' ? formData.email : '' %>"
+            required
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="phone">Teléfono</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            placeholder="Ej: 3156419521"
+            value="<%= typeof formData !== 'undefined' ? formData.phone : '' %>"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">Contraseña <span class="required">*</span></label>
+          <div class="input-password-wrap">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="Mínimo 8 caracteres"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+            <button type="button" class="toggle-password" onclick="togglePassword('password', this)" aria-label="Mostrar contraseña">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+          <p class="form-hint">Usá al menos 8 caracteres con letras y números.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirmPassword">Confirmar contraseña <span class="required">*</span></label>
+          <div class="input-password-wrap">
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="form-input"
+              placeholder="Repetí tu contraseña"
+              autocomplete="new-password"
+              required
+            >
+            <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword', this)" aria-label="Mostrar contraseña">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label checkbox-label">
+            <input type="checkbox" name="terms" class="form-checkbox" required>
+            Acepto los <a href="#" class="form-label-link">Términos y Condiciones</a> y la <a href="#" class="form-label-link">Política de Privacidad</a>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">
+          Crear mi cuenta
+        </button>
+
+      </form>
+
+      <div class="auth-divider">
+        <span>¿Ya tenés cuenta?</span>
+      </div>
+
+      <a href="/usuarios/login" class="btn-secondary btn-full">
+        Iniciar sesión
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<script>
+function togglePassword(fieldId, btn) {
+  const input = document.getElementById(fieldId);
+  input.type = input.type === 'password' ? 'text' : 'password';
+  btn.classList.toggle('active');
+}
+</script>
