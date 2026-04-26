@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "firstName": "Juan",
+    "lastName": "García",
+    "email": "juan.garcia@email.com",
+    "password": "hashed_password_1",
+    "phone": "3156419521",
+    "category": "admin",
+    "createdAt": "2024-01-15T10:30:00Z"
+  },
+  {
+    "id": 2,
+    "firstName": "María",
+    "lastName": "López",
+    "email": "maria.lopez@email.com",
+    "password": "hashed_password_2",
+    "phone": "3108765432",
+    "category": "cliente",
+    "createdAt": "2024-02-03T14:20:00Z"
+  },
+  {
+    "id": 3,
+    "firstName": "Carlos",
+    "lastName": "Martínez",
+    "email": "carlos.martinez@email.com",
+    "password": "hashed_password_3",
+    "phone": "3204567890",
+    "category": "cliente",
+    "createdAt": "2024-02-18T09:15:00Z"
+  },
+  {
+    "id": 4,
+    "firstName": "Sofía",
+    "lastName": "Rodríguez",
+    "email": "sofia.rodriguez@email.com",
+    "password": "hashed_password_4",
+    "phone": "3001234567",
+    "category": "cliente",
+    "createdAt": "2024-03-05T16:45:00Z"
+  },
+  {
+    "id": 5,
+    "firstName": "Andrés",
+    "lastName": "Pérez",
+    "email": "andres.perez@email.com",
+    "password": "hashed_password_5",
+    "phone": "3179876543",
+    "category": "cliente",
+    "createdAt": "2024-03-22T11:00:00Z"
+  }
+]

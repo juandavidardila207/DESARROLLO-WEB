@@ -1,17 +1,19 @@
 <div class="product-card">
-  <div class="product-image-wrapper">
-    <% if (product.discount > 0) { %>
-      <span class="product-discount">-<%= product.discount %>%</span>
-    <% } %>
-    <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image" loading="lazy">
-  </div>
-  <div class="product-info">
-    <div class="product-name"><%= product.name %></div>
-    <div class="product-price"><%= formatPrice(product.price) %></div>
-    <% if (product.oldPrice) { %>
-      <div class="product-old-price"><%= formatPrice(product.oldPrice) %></div>
-    <% } %>
-  </div>
+  <a href="/producto/<%= product.slug %>" class="product-card-link">
+    <div class="product-image-wrapper">
+      <% if (product.discount > 0) { %>
+        <span class="product-discount">-<%= product.discount %>%</span>
+      <% } %>
+      <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image" loading="lazy">
+    </div>
+    <div class="product-info">
+      <div class="product-name"><%= product.name %></div>
+      <div class="product-price"><%= formatPrice(product.price) %></div>
+      <% if (product.oldPrice) { %>
+        <div class="product-old-price"><%= formatPrice(product.oldPrice) %></div>
+      <% } %>
+    </div>
+  </a>
   <button class="btn-add-cart" data-product-id="<%= product.id %>">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="9" cy="21" r="1"></circle>
