@@ -13,6 +13,14 @@
 
       <% if (typeof errorMsg !== 'undefined') { %>
         <div class="alert alert-error"><%= errorMsg %></div>
+        <% if (typeof unverifiedEmail !== 'undefined') { %>
+          <form action="/usuarios/reenviar-verificacion" method="POST" style="margin-top:8px">
+            <input type="hidden" name="email" value="<%= unverifiedEmail %>">
+            <button type="submit" class="btn-resend-verify">
+              Reenviar correo de verificación →
+            </button>
+          </form>
+        <% } %>
       <% } %>
       <% if (typeof successMsg !== 'undefined') { %>
         <div class="alert alert-success"><%= successMsg %></div>

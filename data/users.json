@@ -7,7 +7,10 @@
     "password": "hashed_password_1",
     "phone": "3156419521",
     "category": "admin",
-    "createdAt": "2024-01-15T10:30:00Z"
+    "createdAt": "2024-01-15T10:30:00Z",
+    "verified": true,
+    "verificationToken": null,
+    "verificationExpires": null
   },
   {
     "id": 2,
@@ -17,7 +20,10 @@
     "password": "hashed_password_2",
     "phone": "3108765432",
     "category": "cliente",
-    "createdAt": "2024-02-03T14:20:00Z"
+    "createdAt": "2024-02-03T14:20:00Z",
+    "verified": true,
+    "verificationToken": null,
+    "verificationExpires": null
   },
   {
     "id": 3,
@@ -27,7 +33,10 @@
     "password": "hashed_password_3",
     "phone": "3204567890",
     "category": "cliente",
-    "createdAt": "2024-02-18T09:15:00Z"
+    "createdAt": "2024-02-18T09:15:00Z",
+    "verified": true,
+    "verificationToken": null,
+    "verificationExpires": null
   },
   {
     "id": 4,
@@ -37,7 +46,10 @@
     "password": "hashed_password_4",
     "phone": "3001234567",
     "category": "cliente",
-    "createdAt": "2024-03-05T16:45:00Z"
+    "createdAt": "2024-03-05T16:45:00Z",
+    "verified": true,
+    "verificationToken": null,
+    "verificationExpires": null
   },
   {
     "id": 5,
@@ -47,6 +59,9 @@
     "password": "hashed_password_5",
     "phone": "3179876543",
     "category": "cliente",
-    "createdAt": "2024-03-22T11:00:00Z"
+    "createdAt": "2024-03-22T11:00:00Z",
+    "verified": true,
+    "verificationToken": null,
+    "verificationExpires": null
   }
 ]

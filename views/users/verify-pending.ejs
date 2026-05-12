@@ -1,0 +1,51 @@
+<section class="auth-section">
+  <div class="auth-container">
+    <div class="auth-card auth-card--centered">
+
+      <div class="verify-icon verify-icon--pending">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+          <polyline points="22,6 12,13 2,6"></polyline>
+        </svg>
+      </div>
+
+      <h1 class="auth-title">
+        <% if (typeof resent !== 'undefined' && resent) { %>
+          ¡Correo reenviado!
+        <% } else { %>
+          ¡Revisá tu correo!
+        <% } %>
+      </h1>
+
+      <p class="auth-subtitle" style="margin-bottom:8px">
+        Te enviamos un enlace de verificación a:
+      </p>
+      <p class="verify-email-highlight"><%= email %></p>
+
+      <p class="verify-body">
+        Hacé clic en el enlace del correo para activar tu cuenta. 
+        El enlace es válido por <strong>24 horas</strong>.
+      </p>
+
+      <div class="verify-tips">
+        <p class="verify-tips-title">¿No ves el correo?</p>
+        <ul class="verify-tips-list">
+          <li>Revisá tu carpeta de <strong>Spam</strong> o <strong>Correo no deseado</strong>.</li>
+          <li>A veces tarda unos minutos en llegar.</li>
+          <li>Verificá que el correo sea el correcto.</li>
+        </ul>
+      </div>
+
+      <form action="/usuarios/reenviar-verificacion" method="POST" style="margin-top:20px">
+        <input type="hidden" name="email" value="<%= email %>">
+        <button type="submit" class="btn-secondary btn-full">
+          Reenviar correo de verificación
+        </button>
+      </form>
+
+      <div class="auth-divider"><span>¿Ya verificaste?</span></div>
+      <a href="/usuarios/login" class="btn-primary btn-full">Iniciar sesión</a>
+
+    </div>
+  </div>
+</section>
