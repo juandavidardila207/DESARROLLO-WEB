@@ -1,6 +1,6 @@
 # Tablero de Trabajo — PC Componentes
 
-**Sprint 3 & Sprint 4 · Node.js + Express + EJS**
+**Sprint 3, Sprint 4 & Sprint 5 · Node.js + Express + EJS**
 
 ## Integrantes
 - JD — Juan David Ardila  
@@ -28,10 +28,20 @@
 | Completado | Frontend      | Crear vista products/index.ejs con tabla admin y botones acción     | Sprint 4 | JD         |
 | Completado | Backend       | Conectar registro y login con users.json (leer y escribir)          | Sprint 4 | AR         |
 | Completado | Docs          | Actualizar retro.md para Sprint 4 y crear .gitignore                | Sprint 4 | CB         |
+| Completado | Configuración | Instalar y configurar bcrypt, express-session, multer, cookie-parser y nodemailer | Sprint 5 | JD |
+| Completado | Backend       | Implementar middlewares guestOnly y userOnly para protección de rutas | Sprint 5 | JD        |
+| Completado | Backend       | Implementar función "Recordarme" con cookie httpOnly de 30 días     | Sprint 5 | JD         |
+| Completado | Docs          | Actualizar README con tareas del Sprint 5                           | Sprint 5 | JD         |
+| Completado | Backend       | Implementar POST /usuarios/registro con bcrypt y subida de foto con Multer | Sprint 5 | AR  |
+| Completado | Backend       | Generar token con crypto y enviar correo de verificación con Nodemailer | Sprint 5 | AR      |
+| Completado | Backend       | Implementar GET /usuarios/verificar/:token y POST reenviar-verificacion | Sprint 5 | AR    |
+| Completado | Frontend      | Crear vistas verify-pending.ejs y verify-result.ejs                 | Sprint 5 | CB         |
+| Completado | Frontend      | Crear vista users/profile.ejs con foto, datos y badge de categoría  | Sprint 5 | CB         |
+| Completado | Frontend      | Actualizar header.ejs con menú desplegable para usuario con sesión  | Sprint 5 | CB         |
 
 ---
 
 ## Estado General
 - Pendiente: 0  
 - En progreso: 0  
-- Completado: 15  
+- Completado: 25 
