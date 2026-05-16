@@ -4,8 +4,7 @@
     <div class="admin-header">
       <a href="/products" class="back-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
+          <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
         </svg>
         Volver al listado
       </a>
@@ -20,48 +19,74 @@
 
         <div class="form-group form-group--full">
           <label class="form-label" for="name">Nombre del producto <span class="required">*</span></label>
-          <input type="text" id="name" name="name" class="form-input" placeholder="Ej: iPhone 15 128 GB" value="<%= typeof formData !== 'undefined' ? formData.name : '' %>" required>
+          <input type="text" id="name" name="name" class="form-input" placeholder="Ej: iPhone 15 128 GB"
+            value="<%= typeof formData !== 'undefined' ? formData.name : '' %>" required>
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="description">Descripción <span class="required">*</span></label>
-          <textarea id="description" name="description" class="form-input form-textarea" placeholder="Descripción detallada..." rows="4" required><%= typeof formData !== 'undefined' ? formData.description : '' %></textarea>
+          <label class="form-label" for="description">Descripción</label>
+          <textarea id="description" name="description" class="form-input form-textarea" placeholder="Descripción detallada..." rows="4"><%= typeof formData !== 'undefined' ? formData.description : '' %></textarea>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="price">Precio (COP) <span class="required">*</span></label>
-          <input type="number" id="price" name="price" class="form-input" placeholder="Ej: 2999000" min="0" value="<%= typeof formData !== 'undefined' ? formData.price : '' %>" required>
+          <input type="number" id="price" name="price" class="form-input" placeholder="Ej: 2999000" min="0"
+            value="<%= typeof formData !== 'undefined' ? formData.price : '' %>" required>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="oldPrice">Precio anterior (COP)</label>
-          <input type="number" id="oldPrice" name="oldPrice" class="form-input" placeholder="Opcional" min="0" value="<%= typeof formData !== 'undefined' ? formData.oldPrice : '' %>">
+          <input type="number" id="oldPrice" name="oldPrice" class="form-input" placeholder="Opcional" min="0"
+            value="<%= typeof formData !== 'undefined' ? formData.oldPrice : '' %>">
         </div>
 
         <div class="form-group">
           <label class="form-label" for="discount">Descuento (%)</label>
-          <input type="number" id="discount" name="discount" class="form-input" placeholder="Ej: 15" min="0" max="100" value="<%= typeof formData !== 'undefined' ? formData.discount : '0' %>">
+          <input type="number" id="discount" name="discount" class="form-input" placeholder="Ej: 15" min="0" max="100"
+            value="<%= typeof formData !== 'undefined' ? formData.discount : '0' %>">
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="category">Categoría <span class="required">*</span></label>
-          <select id="category" name="category" class="form-input form-select" required>
-            <option value="">— Seleccionar categoría —</option>
+          <label class="form-label" for="stock">Stock</label>
+          <input type="number" id="stock" name="stock" class="form-input" placeholder="Ej: 20" min="0"
+            value="<%= typeof formData !== 'undefined' ? formData.stock : '0' %>">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="categoryId">Categoría</label>
+          <select id="categoryId" name="categoryId" class="form-input form-select">
+            <option value="">— Sin categoría —</option>
             <% categories.forEach(cat => { %>
-              <option value="<%= cat.id %>" <%= (typeof formData !== 'undefined' && formData.category === cat.id) ? 'selected' : '' %>><%= cat.name %></option>
+              <option value="<%= cat.id %>" <%= (typeof formData !== 'undefined' && formData.categoryId == cat.id) ? 'selected' : '' %>>
+                <%= cat.name %>
+              </option>
+            <% }) %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="brandId">Marca</label>
+          <select id="brandId" name="brandId" class="form-input form-select">
+            <option value="">— Sin marca —</option>
+            <% brands.forEach(b => { %>
+              <option value="<%= b.id %>" <%= (typeof formData !== 'undefined' && formData.brandId == b.id) ? 'selected' : '' %>>
+                <%= b.name %>
+              </option>
             <% }) %>
           </select>
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="image">URL de imagen <span class="required">*</span></label>
-          <input type="text" id="image" name="image" class="form-input" placeholder="Ej: /images/product-nombre.jpg" value="<%= typeof formData !== 'undefined' ? formData.image : '' %>" required>
+          <label class="form-label" for="image">URL de imagen</label>
+          <input type="text" id="image" name="image" class="form-input" placeholder="Ej: /images/product-nombre.jpg"
+            value="<%= typeof formData !== 'undefined' ? formData.image : '' %>">
           <p class="form-hint">Ruta relativa dentro de <code>/public/images/</code> o URL completa.</p>
         </div>
 
         <div class="form-group form-group--full">
           <label class="form-label checkbox-label">
-            <input type="checkbox" name="featured" value="true" class="form-checkbox" <%= (typeof formData !== 'undefined' && formData.featured) ? 'checked' : '' %>>
+            <input type="checkbox" name="featured" value="true" class="form-checkbox"
+              <%= (typeof formData !== 'undefined' && formData.featured) ? 'checked' : '' %>>
             Mostrar como producto destacado en la home
           </label>
         </div>
@@ -70,7 +95,9 @@
       <div class="form-actions">
         <a href="/products" class="btn-secondary">Cancelar</a>
         <button type="submit" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
           Crear producto
         </button>
       </div>
