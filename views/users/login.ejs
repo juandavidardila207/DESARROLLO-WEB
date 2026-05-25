@@ -13,14 +13,6 @@
 
       <% if (typeof errorMsg !== 'undefined') { %>
         <div class="alert alert-error"><%= errorMsg %></div>
-        <% if (typeof unverifiedEmail !== 'undefined') { %>
-          <form action="/usuarios/reenviar-verificacion" method="POST" style="margin-top:8px">
-            <input type="hidden" name="email" value="<%= unverifiedEmail %>">
-            <button type="submit" class="btn-resend-verify">
-              Reenviar correo de verificación →
-            </button>
-          </form>
-        <% } %>
       <% } %>
       <% if (typeof successMsg !== 'undefined') { %>
         <div class="alert alert-success"><%= successMsg %></div>
@@ -96,4 +88,43 @@ function togglePassword(fieldId, btn) {
   input.type = input.type === 'password' ? 'text' : 'password';
   btn.classList.toggle('active');
 }
+</script>
+
+<script>
+(function() {
+  const form = document.querySelector('.auth-form');
+  if (!form) return;
+
+  function showError(input, msg) {
+    clearError(input);
+    input.classList.add('input-error');
+    const err = document.createElement('span');
+    err.className = 'field-error';
+    err.textContent = msg;
+    input.parentNode.insertBefore(err, input.nextSibling);
+  }
+  function clearError(input) {
+    input.classList.remove('input-error');
+    const prev = input.parentNode.querySelector('.field-error');
+    if (prev) prev.remove();
+  }
+
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+    const email    = form.querySelector('#email');
+    const password = form.querySelector('#password');
+
+    clearError(email); clearError(password);
+
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim() || !emailReg.test(email.value)) {
+      showError(email, 'Ingresá un correo electrónico válido.'); valid = false;
+    }
+    if (!password.value) {
+      showError(password, 'La contraseña es obligatoria.'); valid = false;
+    }
+
+    if (!valid) e.preventDefault();
+  });
+})();
 </script>

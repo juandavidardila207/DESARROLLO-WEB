@@ -1,36 +1,42 @@
-# Retrospectiva - Sprint 4
+# Retrospectiva - Sprint 7
 
 ## Metodología: Estrella de Mar
 
 ### 1. Comenzar a hacer
-- Validar los datos del formulario también en el cliente (frontend) antes de enviarlos al servidor, no solo en el backend.
-- Documentar las rutas de la API en un archivo separado (por ejemplo `ROUTES.md`) para que todo el equipo sepa qué endpoints existen.
-- Usar variables de entorno (`.env`) para configurar el puerto y otras constantes del servidor.
+- Validar los datos en el back-end desde el inicio de cada formulario, no dejarlo para el final del sprint.
+- Escribir mensajes de error claros y específicos para cada campo, en lugar de mensajes genéricos como "datos inválidos".
+- Probar los formularios con datos maliciosos o inesperados (strings vacíos, scripts, emails falsos) para asegurarnos de que las validaciones realmente funcionan.
 
 ### 2. Hacer más
-- Revisar el código en conjunto antes de hacer merge, especialmente cuando se trabaja sobre archivos compartidos como `server.js`.
-- Reutilizar funciones auxiliares (como `generateSlug` o `generateId`) en archivos separados para mantener el servidor limpio.
-- Probar cada ruta manualmente después de implementarla para verificar que funcione correctamente.
+- Reutilizar los middlewares de validación en todas las rutas que reciben datos del usuario.
+- Dar feedback visual inmediato al usuario en el front-end antes de enviar el formulario al servidor.
+- Revisar el código en conjunto antes de hacer merge, sobre todo cuando se tocan archivos compartidos como `server.js` y `style.css`.
 
 ### 3. Continuar haciendo
-- Separar las responsabilidades: vistas en `views/`, datos en `data/`, lógica en `server.js`.
-- Mantener los archivos JSON bien formateados y con estructura consistente.
-- Nombrar las ramas de Git de forma descriptiva (por ejemplo: `feature/crud-productos`).
+- Separar la lógica de validación en archivos independientes (`middlewares/validations.js`).
+- Mantener los mensajes de error coherentes entre el front-end y el back-end.
+- Usar `express-validator` para las validaciones del servidor de forma consistente en todas las rutas.
 
 ### 4. Hacer menos
-- Acumular múltiples cambios en un solo commit sin descripción clara.
-- Pisar el trabajo de otro integrante al modificar el mismo archivo sin coordinar.
+- Duplicar código de validación entre rutas similares — conviene extraer funciones reutilizables.
+- Asumir que el front-end es suficiente para proteger el servidor (el usuario puede deshabilitar JavaScript).
 
 ### 5. Dejar de hacer
-- Hardcodear datos directamente en el servidor cuando ya tenemos archivos JSON como fuente de datos.
-- Ignorar los errores en consola durante el desarrollo: cada warning es una señal de algo que puede fallar en producción.
+- Confiar solo en el atributo `required` de HTML como única validación — no es suficiente.
+- Dejar que datos inválidos lleguen a los archivos JSON sin pasar por ningún control.
 
 ---
 
 ## Reflexión general
 
-El Sprint 4 marcó el paso más importante hasta ahora: el sitio dejó de ser estático y comenzó a trabajar con datos reales almacenados en archivos JSON. Implementamos el CRUD completo de productos con las 7 rutas requeridas (GET listado, GET detalle, GET crear, POST crear, GET editar, PUT editar, DELETE eliminar) y también la persistencia de usuarios.
+El Sprint 7 marcó un salto importante en la robustez del proyecto. Implementamos validaciones en dos capas:
 
-El mayor desafío fue entender el flujo de `method-override` para poder usar los métodos HTTP PUT y DELETE desde formularios HTML, ya que el navegador solo soporta GET y POST de forma nativa.
+**Back-end con `express-validator`:**
+- Registro de usuarios: nombre/apellido (mín. 2 chars), email (formato válido + sin duplicados), contraseña (mín. 8 chars + mayúscula + número + carácter especial).
+- Login: email existente en base, contraseña coincidente.
+- Productos: nombre (mín. 5 chars), descripción (mín. 20 chars), imagen (extensión válida JPG/JPEG/PNG/GIF).
 
-Para el próximo sprint, el foco estará en agregar middlewares de autenticación y validaciones más robustas, lo que va a requerir una coordinación aún más cuidadosa entre los integrantes del equipo.
+**Front-end con JavaScript:**
+- Mismas reglas aplicadas antes de enviar el formulario para dar feedback inmediato al usuario.
+
+El principal aprendizaje fue entender que las validaciones de front-end mejoran la UX pero no reemplazan las del back-end. Un usuario malintencionado puede deshabilitar JavaScript y enviar cualquier dato al servidor, por eso la última línea de defensa siempre tiene que estar en el servidor.

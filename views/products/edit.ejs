@@ -4,7 +4,8 @@
     <div class="admin-header">
       <a href="/products" class="back-link">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline>
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
         Volver al listado
       </a>
@@ -23,8 +24,8 @@
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="description">Descripción</label>
-          <textarea id="description" name="description" class="form-input form-textarea" rows="4"><%= product.description %></textarea>
+          <label class="form-label" for="description">Descripción <span class="required">*</span></label>
+          <textarea id="description" name="description" class="form-input form-textarea" rows="4" required><%= product.description %></textarea>
         </div>
 
         <div class="form-group">
@@ -43,37 +44,21 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="stock">Stock</label>
-          <input type="number" id="stock" name="stock" class="form-input" min="0" value="<%= product.stock || 0 %>">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="categoryId">Categoría</label>
-          <select id="categoryId" name="categoryId" class="form-input form-select">
-            <option value="">— Sin categoría —</option>
+          <label class="form-label" for="category">Categoría <span class="required">*</span></label>
+          <select id="category" name="category" class="form-input form-select" required>
+            <option value="">— Seleccionar categoría —</option>
             <% categories.forEach(cat => { %>
-              <option value="<%= cat.id %>" <%= product.categoryId == cat.id ? 'selected' : '' %>><%= cat.name %></option>
-            <% }) %>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="brandId">Marca</label>
-          <select id="brandId" name="brandId" class="form-input form-select">
-            <option value="">— Sin marca —</option>
-            <% brands.forEach(b => { %>
-              <option value="<%= b.id %>" <%= product.brandId == b.id ? 'selected' : '' %>><%= b.name %></option>
+              <option value="<%= cat.id %>" <%= product.category === cat.id ? 'selected' : '' %>><%= cat.name %></option>
             <% }) %>
           </select>
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="image">URL de imagen</label>
+          <label class="form-label" for="image">URL de imagen <span class="required">*</span></label>
           <div class="image-preview-wrap">
             <img src="<%= product.image %>" alt="<%= product.name %>" class="image-preview" id="imgPreview">
           </div>
-          <input type="text" id="image" name="image" class="form-input" value="<%= product.image %>"
-            oninput="document.getElementById('imgPreview').src = this.value">
+          <input type="text" id="image" name="image" class="form-input" value="<%= product.image %>" required oninput="document.getElementById('imgPreview').src = this.value">
           <p class="form-hint">La vista previa se actualiza al escribir.</p>
         </div>
 
@@ -88,25 +73,19 @@
       <div class="form-actions">
         <a href="/products" class="btn-secondary">Cancelar</a>
         <button type="submit" class="btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-            <polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline>
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
           Guardar cambios
         </button>
       </div>
     </form>
 
+    <!-- Zona de peligro: eliminar -->
     <div class="danger-zone">
       <h3 class="danger-title">Zona de peligro</h3>
       <p class="danger-desc">Eliminás el producto de forma permanente. Esta acción no se puede deshacer.</p>
-      <form action="/products/<%= product.id %>?_method=DELETE" method="POST"
-        onsubmit="return confirm('¿Seguro que querés eliminar «<%= product.name %>»?')">
+      <form action="/products/<%= product.id %>?_method=DELETE" method="POST" onsubmit="return confirm('¿Seguro que querés eliminar «<%= product.name %>»? Esta acción no se puede deshacer.')">
         <button type="submit" class="btn-danger">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path>
-            <path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path>
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
           Eliminar este producto
         </button>
       </form>
@@ -114,3 +93,54 @@
 
   </div>
 </section>
+
+<script>
+(function() {
+  const form = document.querySelector('.product-form');
+  if (!form) return;
+
+  function showError(input, msg) {
+    clearError(input);
+    input.classList.add('input-error');
+    const err = document.createElement('span');
+    err.className = 'field-error';
+    err.textContent = msg;
+    input.parentNode.appendChild(err);
+  }
+  function clearError(input) {
+    input.classList.remove('input-error');
+    const prev = input.parentNode.querySelector('.field-error');
+    if (prev) prev.remove();
+  }
+
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+    const name  = form.querySelector('#name');
+    const desc  = form.querySelector('#description');
+    const price = form.querySelector('#price');
+    const cat   = form.querySelector('#category');
+    const img   = form.querySelector('#image');
+
+    [name, desc, price, cat, img].forEach(clearError);
+
+    if (!name.value.trim() || name.value.trim().length < 5) {
+      showError(name, 'El nombre debe tener al menos 5 caracteres.'); valid = false;
+    }
+    if (!desc.value.trim() || desc.value.trim().length < 20) {
+      showError(desc, 'La descripción debe tener al menos 20 caracteres.'); valid = false;
+    }
+    if (!price.value || parseFloat(price.value) <= 0) {
+      showError(price, 'Ingresá un precio válido mayor a 0.'); valid = false;
+    }
+    if (!cat.value) {
+      showError(cat, 'Seleccioná una categoría.'); valid = false;
+    }
+    const imgReg = /\.(jpg|jpeg|png|gif)$/i;
+    if (!img.value.trim() || !imgReg.test(img.value)) {
+      showError(img, 'La imagen debe ser un archivo válido (JPG, JPEG, PNG, GIF).'); valid = false;
+    }
+
+    if (!valid) e.preventDefault();
+  });
+})();
+</script>

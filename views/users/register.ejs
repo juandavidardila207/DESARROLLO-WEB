@@ -1,5 +1,6 @@
 <section class="auth-section">
   <div class="auth-container">
+
     <div class="auth-card">
 
       <div class="auth-logo">
@@ -14,47 +15,81 @@
         <div class="alert alert-error"><%= errorMsg %></div>
       <% } %>
 
-      <form class="auth-form" action="/usuarios/registro" method="POST" enctype="multipart/form-data">
+      <form class="auth-form" action="/usuarios/registro" method="POST">
 
         <div class="form-grid form-grid--two">
+
           <div class="form-group">
             <label class="form-label" for="firstName">Nombre <span class="required">*</span></label>
-            <input type="text" id="firstName" name="firstName" class="form-input" placeholder="Juan"
-              value="<%= typeof formData !== 'undefined' ? formData.firstName : '' %>" required>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-input"
+              placeholder="Juan"
+              value="<%= typeof formData !== 'undefined' ? formData.firstName : '' %>"
+              required
+            >
           </div>
+
           <div class="form-group">
             <label class="form-label" for="lastName">Apellido <span class="required">*</span></label>
-            <input type="text" id="lastName" name="lastName" class="form-input" placeholder="Pérez"
-              value="<%= typeof formData !== 'undefined' ? formData.lastName : '' %>" required>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-input"
+              placeholder="Pérez"
+              value="<%= typeof formData !== 'undefined' ? formData.lastName : '' %>"
+              required
+            >
           </div>
+
         </div>
 
         <div class="form-group">
           <label class="form-label" for="email">Correo electrónico <span class="required">*</span></label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="tucorreo@ejemplo.com"
-            value="<%= typeof formData !== 'undefined' ? formData.email : '' %>" autocomplete="email" required>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-input"
+            placeholder="tucorreo@ejemplo.com"
+            autocomplete="email"
+            value="<%= typeof formData !== 'undefined' ? formData.email : '' %>"
+            required
+          >
         </div>
 
         <div class="form-group">
           <label class="form-label" for="phone">Teléfono</label>
-          <input type="tel" id="phone" name="phone" class="form-input" placeholder="Ej: 3156419521"
-            value="<%= typeof formData !== 'undefined' ? formData.phone : '' %>">
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="profileImage">Foto de perfil</label>
-          <input type="file" id="profileImage" name="profileImage" class="form-input" accept="image/*">
-          <p class="form-hint">Opcional. Máximo 5MB. Formatos: jpg, png, gif, webp.</p>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            class="form-input"
+            placeholder="Ej: 3156419521"
+            value="<%= typeof formData !== 'undefined' ? formData.phone : '' %>"
+          >
         </div>
 
         <div class="form-group">
           <label class="form-label" for="password">Contraseña <span class="required">*</span></label>
           <div class="input-password-wrap">
-            <input type="password" id="password" name="password" class="form-input"
-              placeholder="Mínimo 8 caracteres" autocomplete="new-password" minlength="8" required>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-input"
+              placeholder="Mínimo 8 caracteres"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
             <button type="button" class="toggle-password" onclick="togglePassword('password', this)" aria-label="Mostrar contraseña">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </button>
           </div>
@@ -64,11 +99,19 @@
         <div class="form-group">
           <label class="form-label" for="confirmPassword">Confirmar contraseña <span class="required">*</span></label>
           <div class="input-password-wrap">
-            <input type="password" id="confirmPassword" name="confirmPassword" class="form-input"
-              placeholder="Repetí tu contraseña" autocomplete="new-password" required>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              class="form-input"
+              placeholder="Repetí tu contraseña"
+              autocomplete="new-password"
+              required
+            >
             <button type="button" class="toggle-password" onclick="togglePassword('confirmPassword', this)" aria-label="Mostrar contraseña">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </button>
           </div>
@@ -81,12 +124,19 @@
           </label>
         </div>
 
-        <button type="submit" class="btn-primary btn-full">Crear mi cuenta</button>
+        <button type="submit" class="btn-primary btn-full">
+          Crear mi cuenta
+        </button>
 
       </form>
 
-      <div class="auth-divider"><span>¿Ya tenés cuenta?</span></div>
-      <a href="/usuarios/login" class="btn-secondary btn-full">Iniciar sesión</a>
+      <div class="auth-divider">
+        <span>¿Ya tenés cuenta?</span>
+      </div>
+
+      <a href="/usuarios/login" class="btn-secondary btn-full">
+        Iniciar sesión
+      </a>
 
     </div>
   </div>
@@ -98,4 +148,61 @@ function togglePassword(fieldId, btn) {
   input.type = input.type === 'password' ? 'text' : 'password';
   btn.classList.toggle('active');
 }
+</script>
+
+<script>
+(function() {
+  const form = document.querySelector('.auth-form');
+  if (!form) return;
+
+  function showError(input, msg) {
+    clearError(input);
+    input.classList.add('input-error');
+    const err = document.createElement('span');
+    err.className = 'field-error';
+    err.textContent = msg;
+    input.parentNode.insertBefore(err, input.nextSibling);
+  }
+  function clearError(input) {
+    input.classList.remove('input-error');
+    const prev = input.parentNode.querySelector('.field-error');
+    if (prev) prev.remove();
+  }
+
+  form.addEventListener('submit', function(e) {
+    let valid = true;
+
+    const firstName = form.querySelector('#firstName');
+    const lastName  = form.querySelector('#lastName');
+    const email     = form.querySelector('#email');
+    const password  = form.querySelector('#password');
+    const confirm   = form.querySelector('#confirmPassword');
+    const terms     = form.querySelector('[name="terms"]');
+
+    [firstName, lastName, email, password, confirm].forEach(clearError);
+
+    if (!firstName.value.trim() || firstName.value.trim().length < 2) {
+      showError(firstName, 'El nombre debe tener al menos 2 caracteres.'); valid = false;
+    }
+    if (!lastName.value.trim() || lastName.value.trim().length < 2) {
+      showError(lastName, 'El apellido debe tener al menos 2 caracteres.'); valid = false;
+    }
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim() || !emailReg.test(email.value)) {
+      showError(email, 'Ingresá un correo electrónico válido.'); valid = false;
+    }
+    const passReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
+    if (!passReg.test(password.value)) {
+      showError(password, 'La contraseña debe tener al menos 8 caracteres, una mayúscula, un número y un carácter especial.'); valid = false;
+    }
+    if (password.value !== confirm.value) {
+      showError(confirm, 'Las contraseñas no coinciden.'); valid = false;
+    }
+    if (terms && !terms.checked) {
+      showError(terms, 'Debés aceptar los términos y condiciones.'); valid = false;
+    }
+
+    if (!valid) e.preventDefault();
+  });
+})();
 </script>
